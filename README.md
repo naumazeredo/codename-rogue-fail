@@ -13,10 +13,13 @@ Risk of Rain and Nuclear Throne.
 
 - [ ] v0.0: Movement
   - [x] Basic player movement
-  - [ ] Edge wrapping
+  - [x] Basic screen wrapping
   - [ ] Ledge grab
   - [ ] Dash
   - [ ] Joystick input
+  - [ ] Bugs
+    - [ ] Player movement: setting velocity and colliding with wall makes player
+        hang in the air
 - [ ] v0.1: Enemies
   - [ ] Basic enemy
   - [ ] Attacking
