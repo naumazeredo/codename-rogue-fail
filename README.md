@@ -12,10 +12,11 @@ Risk of Rain and Nuclear Throne.
 ## Roadmap
 
 - [ ] v0.0: Movement
-  - [ ] Player movement
+  - [x] Basic player movement
+  - [ ] Edge wrapping
+  - [ ] Ledge grab
   - [ ] Dash
   - [ ] Joystick input
-  - [ ] Room platforming
 - [ ] v0.1: Enemies
   - [ ] Basic enemy
   - [ ] Attacking
