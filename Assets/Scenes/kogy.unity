@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 1344570007}
   - component: {fileID: 1344570006}
   - component: {fileID: 1344570010}
+  - component: {fileID: 1344570012}
   - component: {fileID: 1344570011}
   m_Layer: 0
   m_Name: Player
@@ -437,8 +438,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGrounded: {fileID: 1154614342}
-  moveSpeed: 2
+  jumpHeightMax: 5
+  jumpHeightMin: 5
   jumpSpeed: 5
+  fallGravity: 5
+  moveSpeed: 1
+  dragX: 10
+  airSpeed: 1
+  airDragX: 10
+  maxV: 10
+  wallJumpImpulse: 1
+  cf: {fileID: 1344570012}
 --- !u!114 &1344570011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +461,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1803325761842574, guid: c0c1aab6f3c4d417cb9d88b9bdedec3c, type: 2}
+--- !u!114 &1344570012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1344570005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5afde070f6d24266b884e4a3743659f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1698437334
 GameObject:
   m_ObjectHideFlags: 0

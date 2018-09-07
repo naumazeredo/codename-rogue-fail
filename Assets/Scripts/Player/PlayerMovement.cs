@@ -60,8 +60,13 @@ public class PlayerMovement : MonoBehaviour {
             {
                 rb.AddForce( rb.mass * jumpGravityMin * Vector2.down );
             }
-            Vector2 dragForceX = ( Vector2.Dot(x.relativeVelocity,Vector2.right)*Vector2.right + inputX * moveSpeed * Vector2.right ) * dragX;
+
+            Vector2 inputForceX = inputX * moveSpeed * Vector2.right * rb.mass;
+            rb.AddForce(inputForceX, ForceMode2D.Impulse);
+
+            Vector2 dragForceX = Vector2.Dot(x.relativeVelocity,Vector2.right)*Vector2.right * dragX;
             rb.AddForce(dragForceX);
+
             if (inputJ)
             {
                 rb.AddForce(Vector2.up*jumpSpeed*rb.mass, ForceMode2D.Impulse);
@@ -84,7 +89,11 @@ public class PlayerMovement : MonoBehaviour {
             {
                 rb.AddForce( rb.mass * jumpGravityMin * Vector2.down );
             }
-            Vector2 airDragForceX = ( -Vector2.Dot(rb.velocity,Vector2.right)*Vector2.right + inputX * airSpeed * Vector2.right ) * airDragX;
+
+            Vector2 inputForceX = inputX * airSpeed * Vector2.right * rb.mass;
+            rb.AddForce(inputForceX, ForceMode2D.Impulse);
+
+            Vector2 airDragForceX = -Vector2.Dot(rb.velocity,Vector2.right)*Vector2.right * airDragX;
             rb.AddForce(airDragForceX);
         }
 
