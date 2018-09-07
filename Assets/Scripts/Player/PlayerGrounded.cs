@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerGrounded : MonoBehaviour {
   // Total time to wait before deactivating is_grounded
-  public float disableDelay = 0.050f;
+  public float disableDelay = 2.1f;
 
   bool grounded;
 
@@ -23,6 +23,7 @@ public class PlayerGrounded : MonoBehaviour {
       grounded = true;
     }
   }
+
 
   void OnTriggerExit2D() {
     if (grounded) {

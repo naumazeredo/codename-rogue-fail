@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ff1aad9c5ec413b94f1f8a58b72f94, type: 3}
+  m_Name: DashInfo
+  m_EditorClassIdentifier: 
+  tapTimeThreshold: 0.3
+  dashTime: 3
+  dashSpeed: 1
+  buttonName: Dash
