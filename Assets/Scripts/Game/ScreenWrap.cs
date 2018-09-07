@@ -2,6 +2,7 @@
 using UnityEngine;
 
 // TODO: Collision handling between clones + originals
+// TODO: Shader to render exactly equal clone
 
 public class ScreenWrap : MonoBehaviour {
   public GameObject prefab;
@@ -18,12 +19,20 @@ public class ScreenWrap : MonoBehaviour {
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
         if (i == 0 && j == 0) continue;
-        clones.Add(Instantiate(prefab, transform.position, transform.rotation));
+        var go = new GameObject();
+
+        // FIXME: ...
+        var spriteRenderer = go.AddComponent<SpriteRenderer>();
+        spriteRenderer.sprite = GetComponent<SpriteRenderer>().sprite;
+
+        clones.Add(go);
       }
     }
+
+    Reposition();
   }
 
-  void LateUpdate() {
+  void Reposition() {
     // Actual creen wrap
     Vector3 bounds = camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
     transform.position = new Vector3(
@@ -47,10 +56,14 @@ public class ScreenWrap : MonoBehaviour {
         clones[k].transform.position = position;
         clones[k].transform.rotation = transform.rotation;
 
-        // TODO: change clone sprite to match player
+        // TODO: change clone sprite to match original object
 
         k++;
       }
     }
+  }
+
+  void LateUpdate() {
+    Reposition();
   }
 }

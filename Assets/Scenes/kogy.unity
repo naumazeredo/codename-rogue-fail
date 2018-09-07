@@ -157,7 +157,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 954397737}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5cfa11d164d5c41f2860d74df0f24b21, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
@@ -245,8 +245,6 @@ GameObject:
   - component: {fileID: 1344570007}
   - component: {fileID: 1344570006}
   - component: {fileID: 1344570010}
-  - component: {fileID: 1344570012}
-  - component: {fileID: 1344570011}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -293,7 +291,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -352,7 +350,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1344570005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.38, y: 0.12, z: 0}
+  m_LocalPosition: {x: -2.19, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -369,40 +367,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84edc4fa048784d9d9a424a58e959696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeightMax: 5
-  jumpHeightMin: 5
+  jumpHeightMin: 1
+  jumpHeightMax: 2
   jumpSpeed: 5
-  fallGravity: 5
+  fallGravity: 10
   moveSpeed: 1
   dragX: 10
   airSpeed: 1
   airDragX: 10
-  maxV: 10
-  wallJumpImpulse: 1
-  cf: {fileID: 1344570012}
---- !u!114 &1344570011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1344570005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5028e2632fe23435b87027bb960023ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 1803325761842574, guid: c0c1aab6f3c4d417cb9d88b9bdedec3c, type: 2}
---- !u!114 &1344570012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1344570005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5afde070f6d24266b884e4a3743659f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  maxV: 20
+  wallJumpImpulse: 5
 --- !u!1 &1698437334
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +518,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1793155898}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5cfa11d164d5c41f2860d74df0f24b21, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
@@ -646,7 +620,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2143425579}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5cfa11d164d5c41f2860d74df0f24b21, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
