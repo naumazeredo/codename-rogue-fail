@@ -79,3 +79,13 @@ public class PlayerMovement : PhysicsObject {
     }
   }
 }
+
+public enum States
+{
+    Normal,
+    LedgeGrab
+}
+// TODO: For ledge grab, detect using CollisionFetcher if is close to edge, then pass to LedgeGrab state,
+// on LedgeGrab state, zero player input, and set an opposite force equal to gravity, or simply disable it, until
+// the player inputs to drop the ledge or get up. On get up, force player on top of ledge, by calculating the collision
+// boundaries relative to player position.

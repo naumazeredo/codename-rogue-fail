@@ -12,8 +12,8 @@ public class PhysicsObject : MonoBehaviour {
 
   protected ContactInfo GetBestContactInfo(Vector2 axis)
   {
-    float bestAngle = -1.1f;
-    ContactInfo best = new ContactInfo();
+    var bestAngle = -1.1f;
+    var best = new ContactInfo();
     foreach (ContactInfo x in collisionFetcher)
     {
       float angle = Vector2.Dot(x.normal, axis);
@@ -23,7 +23,6 @@ public class PhysicsObject : MonoBehaviour {
         bestAngle = angle;
       }
     }
-
     return best;
   }
 

@@ -25,6 +25,12 @@ public class CollisionFetcher : MonoBehaviour, IEnumerable<ContactInfo>
     private int[] ContactCount = {0, 0};
     private int writeBuffer = 0;
     private int readBuffer = 1;
+    private bool backwardsRead = false;
+
+    public void FlipReadOrder()
+    {
+        backwardsRead = !backwardsRead;
+    }
 
     private void RegisterCollision(Collision2D col)
     {
@@ -68,9 +74,19 @@ public class CollisionFetcher : MonoBehaviour, IEnumerable<ContactInfo>
 
     public IEnumerator<ContactInfo> GetEnumerator()
     {
-        for (int i = 0; i < ContactCount[readBuffer]; ++i)
+        if (!backwardsRead)
         {
-            yield return contacts[readBuffer,i];
+            for (int i = 0; i < ContactCount[readBuffer]; ++i)
+            {
+                yield return contacts[readBuffer, i];
+            }
+        }
+        else
+        {
+            for (int i = ContactCount[readBuffer]-1;  i >= 0; --i)
+            {
+                yield return contacts[readBuffer, i];
+            }
         }
     }
 

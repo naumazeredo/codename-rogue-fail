@@ -18,8 +18,7 @@ Risk of Rain and Nuclear Throne.
   - [ ] Dash
   - [ ] Joystick input
   - [ ] Bugs
-    - [x] Player movement: setting velocity and colliding with wall makes player
-        hang in the air
+  - [x] Player movement: setting velocity and colliding with wall makes player hang in the air
 - [ ] v0.1: Enemies
   - [ ] Basic enemy
   - [ ] Attacking
