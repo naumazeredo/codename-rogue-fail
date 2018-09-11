@@ -59,6 +59,7 @@ to next level (BoI), an item room (?) and secret rooms (?).
 
 ## Roadmap
 
+- [ ] Trello/Jira roadmap (easier to update, not branch related)
 - [ ] v0.0: Movement
   - [x] Basic player movement
   - [x] Basic screen wrapping
@@ -76,4 +77,16 @@ to next level (BoI), an item room (?) and secret rooms (?).
   - [ ] Abilites system
 - [ ] v0.2: Rooms
   - [ ] Room advancing system
-- [ ] v0.3: Custom Physics?
+
+## Ideas
+
+- [ ] Hold down while falling: fall faster (Towerfall)
+- [ ] Delayed jump: allow jumping if player just got out of ground (1~3 frames),
+    or if player will get ground/wall contact at near future (1~3 frames)
+- [ ] Abstract inputs: be able to control every unit in the game
+
+## Bugs
+
+- Jump sometimes is very high
+- Jump speed and jump height to calculate gravity seems wrong (using a way
+    lower speed, the height is not reached, for example)
