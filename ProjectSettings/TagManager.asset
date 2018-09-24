@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Wrap Clone
+  - ledge
   layers:
   - Default
   - TransparentFX
