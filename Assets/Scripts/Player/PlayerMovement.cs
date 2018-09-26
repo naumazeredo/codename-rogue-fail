@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
 public class PlayerMovement : PhysicsObject {
+  InputManager inputManager;
+
+  public int playerId = 0;
+
   // XXX: Refactor? Create Movement(Vector2 currentGravity, Vector2 targetVelocity)?
   public float jumpHeightMin = 5f;
   public float jumpHeightMax = 5f;
@@ -18,39 +22,40 @@ public class PlayerMovement : PhysicsObject {
   Rigidbody2D rb;
 
   private float inputX;
+  //private float input_y;
 
   private MoveState state = MoveState.Normal;
 
-  private float ledgeDist = 0.5f;
-  //private float input_y;
+  //private float ledgeDist = 0.5f;
 
   void Start () {
     SetupPhysics();
 
     rb = GetComponent<Rigidbody2D>();
+    inputManager = GameObject.FindWithTag("Input Manager").GetComponent<InputManager>();
   }
 
   void Update() {
-    inputX = Input.GetAxis("Horizontal");
-    //input_y = Input.GetAxis("Vertical");
+    inputX = 0;
+    if (inputManager.GetKey(playerId, InputKey.Right)) inputX += 1;
+    if (inputManager.GetKey(playerId, InputKey.Left )) inputX -= 1;
   }
 
   void FixedUpdate() {
     ContactInfo ground = GetBestContactInfo(Vector2.up);
     Debug.DrawLine(ground.position, ground.position + ground.normal, Color.cyan);
     dragY = fallGravity / maxV;
+
     if (state == MoveState.Normal) {
       // Gravity force
       if (rb.velocity.y <= 0f) {
         Vector2 dragForceY = -Vector2.Dot(rb.velocity, Vector2.up) * Vector2.up * dragY;
         rb.AddForce(rb.mass * fallGravity * Vector2.down);
         rb.AddForce(dragForceY);
-      }
-      else if (Input.GetButton("Jump")) {
+      } else if (inputManager.GetKey(playerId, InputKey.Jump)) {
         float jumpGravityMax = jumpSpeed * jumpSpeed / (2 * jumpHeightMax);
         rb.AddForce(rb.mass * jumpGravityMax * Vector2.down);
-      }
-      else {
+      } else {
         float jumpGravityMin = jumpSpeed * jumpSpeed / (2 * jumpHeightMin);
         rb.AddForce(rb.mass * jumpGravityMin * Vector2.down);
       }
@@ -66,7 +71,7 @@ public class PlayerMovement : PhysicsObject {
 
         // Jump logic
         // FIXME: Collision with normal pointing down should not allow jumping
-        if (Input.GetButtonDown("Jump")) {
+        if (inputManager.GetKeyDown(playerId, InputKey.Jump)) {
           rb.velocity = new Vector2(rb.velocity.x, 0);
           rb.AddForce(Vector2.up * jumpSpeed * rb.mass, ForceMode2D.Impulse);
 
@@ -74,8 +79,7 @@ public class PlayerMovement : PhysicsObject {
           rb.AddForce(Vector2.Dot(ground.normal, Vector2.right) * Vector2.right * wallJumpImpulse * rb.mass,
             ForceMode2D.Impulse);
         }
-      }
-      else {
+      } else {
         // Mid-air horizontal movement
         Vector2 inputForceX = inputX * airSpeed * Vector2.right * rb.mass;
         rb.AddForce(inputForceX, ForceMode2D.Impulse);
@@ -85,12 +89,11 @@ public class PlayerMovement : PhysicsObject {
         Vector2 airDragForceX = -Vector2.Dot(rb.velocity, Vector2.right) * Vector2.right * airDragX;
         rb.AddForce(airDragForceX);
       }
-    }
-    else { //Ledge grab state
+    //} else { //Ledge grab state
     }
 
 
-    Debug.Log(state);
+    //Debug.Log(state);
   }
 
   private void OnTriggerEnter2D(Collider2D other) {
