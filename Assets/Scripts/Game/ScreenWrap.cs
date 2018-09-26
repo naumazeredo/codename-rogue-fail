@@ -9,7 +9,7 @@ public class ScreenWrap : MonoBehaviour {
 
   // Sprite clones to every side for the visual effect
   List<GameObject> clones;
-  Camera camera;
+  new Camera camera;
 
   void Start() {
     camera = Camera.main;
